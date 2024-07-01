@@ -24,7 +24,7 @@ const dispatch=useDispatch()
 
   return (
     <div>
-
+ <DisableDeveloperTools/>
        <RouterProvider router={router} />
     </div>
   );
