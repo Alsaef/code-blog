@@ -4,7 +4,7 @@ import { FaGithub, FaFacebook, FaLinkedin, FaIntercom, FaInternetExplorer } from
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEarth } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../../Components/footer/Footer';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 const Creator = () => {
    
     return (

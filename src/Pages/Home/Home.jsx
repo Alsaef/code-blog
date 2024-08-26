@@ -5,14 +5,19 @@ import Blog from '../../Components/Blog/Blog';
 import { useGetBlogsQuery } from '../../features/blogApi/blogApi';
 import Loading from '../../Components/Loading/Loading';
 import Footer from '../../Components/footer/Footer';
+import Error from '../../Components/Error/Error';
 const Home = () => {
    
     const [searchBlog,setSearchBlog]=useState('')
-    const {data,isLoading}=useGetBlogsQuery(searchBlog ||'',{pollingInterval:500})
+    const {data,isLoading,isError}=useGetBlogsQuery(searchBlog ||'',{pollingInterval:500})
     if (isLoading) {
         return <>
         <Loading></Loading>
         </>
+    }
+
+    if (isError) {
+      return <Error></Error>
     }
     
     const handleSelectChange = (e) => {
@@ -36,17 +41,18 @@ right-[125px] top-[9rem]'>
 <section className='mt-15'>
 <h2 className='text-4xl text-center py-3 font-semibold'>Our <span className='text-green-500'>Blog</span></h2>
 <div className='px-3 py-5 mx-auto w-[90%]'>
-{
-    data.length>0&&<>
+
+    
     <select className="select select-success w-full max-w-xs" value={searchBlog} onChange={handleSelectChange}>
   <option value=''>Pick your favorite language</option>
   <option value='javascript' >JavaScript</option>
+  <option value='python' >Python</option>
   <option value='react js'>React Js</option>
 </select>
-    </>
-}
+  
+
 {
-    data.length===0?<div className='flex flex-col items-center'><p className='text-xl text-red-500 font-semibold'>Blog Not Found</p></div>:data?.map(blog=><Blog key={blog._id} blog={blog}></Blog>)
+    data.length===0?<div className='flex flex-col items-center'><p className='text-xl text-red-500 font-semibold py-5'>Blog Not Found</p></div>:data?.map(blog=><Blog key={blog._id} blog={blog}></Blog>)
 }
 </div>
 </section>

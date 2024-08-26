@@ -62,7 +62,7 @@ const authSlice=createSlice({
            state.isError=false
         })
         builder.addCase(createAccount.fulfilled,(state,{payload})=>{
-           state.isLoading=true;
+         state.isLoading=false;
            state.user.email=payload;
            state.isError=false
         })
@@ -79,7 +79,7 @@ const authSlice=createSlice({
            state.isError=false
         })
         builder.addCase(login.fulfilled,(state,{payload})=>{
-           state.isLoading=true;
+         state.isLoading=false;
            state.user.email=payload;
            state.isError=false
         })
@@ -96,7 +96,7 @@ const authSlice=createSlice({
            state.isError=false
         })
         builder.addCase(getUser.fulfilled,(state,{payload})=>{
-           state.isLoading=true;
+         state.isLoading=false;
           if (payload.status) {
             state.user=payload.data
           }

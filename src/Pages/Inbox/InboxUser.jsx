@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import Loading from '../../Components/Loading/Loading';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useGetMessageQuery, useSendMessageMutation } from '../../features/messageApi/messageApi';
 const InboxUser = () => {
     const room=useLoaderData()

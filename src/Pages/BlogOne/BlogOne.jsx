@@ -5,7 +5,7 @@ import Comment from '../../Components/Comment/Comment';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useCreateCommentMutation, useGetCommentQuery } from '../../features/comment/commentApi';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 const BlogOne = () => {
     const blogData=useLoaderData()
 	const [isLoading,setLoading]=useState(true)
@@ -50,7 +50,10 @@ const BlogOne = () => {
             </Helmet>
             <div className="bg-gray-100  flex items-center justify-center">
 	<div className=" p-8 rounded-lg  max-w-md">
-		
+	<Link to='/'>	<button className='btn'><span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+</svg>
+</span> Home</button></Link>
 		
 		<div className="mb-4">
 			<p className='text-3xl py-3'>{blogData.name}</p>
@@ -58,19 +61,17 @@ const BlogOne = () => {
              {
 				blogData.codeExample.length>0&&<p className='text-2xl py-2 font-semibold'>Example</p>
 			 }
-{
-    blogData.codeExample.length > 0 && (
-        <textarea
-            rows='6'
-            cols='60'
-            readOnly
-            className='bg-black text-green-400 p-3 w-full  lg:w-[150%]' // Responsive width classes
-        >
-            {blogData.codeExample}
-        </textarea>
-    )
-}
+                    {
+                        blogData.codeExample.length > 0 && (
+                            <div className="mockup-code">
+                                <pre className="text-green-500 flex flex-col items-start px-2">
 
+                                    <code>{blogData.codeExample}</code>
+                                    
+                                    </pre>
+                            </div>
+                        )
+                    }
 
 			
 		</div>

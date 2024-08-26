@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { logout } from '../features/Auth/authSlice';
 import Loading from '../Components/Loading/Loading';
-import DefultHelmet from '../DefultHelmet/DefultHelmet';
+import { Helmet } from 'react-helmet-async';
 const Layout = () => {
   const [isLoading,setLoading]=useState(true)
     const {user:{email,name,role,image}}=useSelector(state=>state.auth)
@@ -35,7 +35,11 @@ const Layout = () => {
     
     return (
         <div>
-      <DefultHelmet></DefultHelmet>
+   <Helmet>
+                <meta charSet="utf-8" />
+                <title>Code Blog</title>
+                <meta property="og:description" content="AL SAEF RATUL · Web Developer (Frontend-React.JS) · 1+ year in Web Application Development, Coding, Programming, Testing, Data Management, Project Management."/>
+            </Helmet>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">

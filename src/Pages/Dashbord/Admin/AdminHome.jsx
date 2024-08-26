@@ -52,6 +52,7 @@ const AdminHome = () => {
             <select {...register("category", { required: true })} className="select select-success w-full max-w-xs mt-2">
   <option value='' disabled>Pick your favorite language</option>
   <option value='javascript' >JavaScript</option>
+  <option value='python' >Python</option>
   <option value='react js'>React Js</option>
 </select>
         </div>

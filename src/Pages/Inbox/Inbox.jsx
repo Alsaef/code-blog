@@ -5,7 +5,7 @@ import {faMessage } from '@fortawesome/free-solid-svg-icons'
 import 'react-chat-elements/dist/main.css'
 import { Link } from 'react-router-dom';
 import { useGetRoomQuery } from '../../features/RoomApi/RoomApi';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 const Inbox = () => {
   const {data,isLoading}=useGetRoomQuery(null,{pollingInterval:100})
   
