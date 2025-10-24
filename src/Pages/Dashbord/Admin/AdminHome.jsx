@@ -8,13 +8,14 @@ const AdminHome = () => {
     const [createblog,{isLoading,isSuccess}]=useCreateBlogMutation()
     const navigate=useNavigate()
     const onSubmit = data => {
-        const {name,photo,detils,code,category}=data 
+        const {name,photo,detils,code,category,link}=data 
         const blog={
             name:name,
             category:category,
             image:photo,
             detils:detils,
-            codeExample:code
+            codeExample:code,
+            link:link
         }
         console.log(blog)
         createblog(blog)
@@ -41,6 +42,13 @@ const AdminHome = () => {
                 <input {...register("name", {required: true})} type="text" id="name" name="name" className="mt-1 p-2 w-full border rounded-md"/>
             </div>
             <div>
+                <label  className="block text-sm font-medium text-gray-700">Blog Link</label>
+                <input {...register("link", {required: true})} type="url" id="link" name="link" className="mt-1 p-2 w-full border rounded-md"/>
+            </div>
+        </div>
+
+        <div>
+             <div>
                 <label  className="block text-sm font-medium text-gray-700">PhotoUrl</label>
                 <input {...register("photo", {required: true})} type="text" id="photo" name="photo" className="mt-1 p-2 w-full border rounded-md"/>
             </div>
